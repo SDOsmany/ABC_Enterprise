@@ -8,7 +8,7 @@ A program to simulate an enterprise system for product inventory
 
 1. Clone the repository
 
-    ` git clone https://github.com/SDOsmany/ABD_Enterprise.git `
+    ` git clone https://github.com/SDOsmany/ABC_Enterprise.git `
     
     **Note : this will clone all the files in this repo to the path(directory) you are on in the git terminal
 2. Create a ` .gitignore ` file to ingore changes to files we don't need to keep track of

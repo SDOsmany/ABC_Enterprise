@@ -320,7 +320,7 @@ public class Main
     {
         String result = String.format("%30s", info.getProductName());
         result += String.format("%30s", simpleDate.format(info.getProductCreated()));
-        result += String.format("%30s", info.getManufacture().getCompanyName());
+        result += String.format("%30s", info.getManufacturer().getCompanyName());
         return result;
     }
 

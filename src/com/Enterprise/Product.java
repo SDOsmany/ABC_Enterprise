@@ -5,22 +5,22 @@ import java.util.Date;
 public class Product
 {
     // instance variables
-    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
     // to hold the Manufacturer object
-    Manufacturer manufacture;
+    private Manufacturer manufacturer;
 
     // to hold product name
     String productName;
 
     // to hold quantity
-    int quantity;
+    private int quantity;
 
     // to hold the unit price
-    double unitPrice;
+    private double unitPrice;
 
     // to hold the product date
-    Date productCreated;
+    private Date productCreated;
 
     // default constructor
     public Product()
@@ -29,18 +29,18 @@ public class Product
         this.quantity = 0;
         this.unitPrice = 0.0;
         this.productCreated = null;
-        this.manufacture = null;
+        this.manufacturer = null;
     }
 
     // parameterized constructor
-    public Product(String prodName, int quantity, double unitPrice,
+    public Product(String productName, int quantity, double unitPrice,
                    Date productCreated, Manufacturer manufact)
     {
-        this.productName = prodName;
+        this.productName = productName;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.productCreated = productCreated;
-        this.manufacture = manufact;
+        this.manufacturer = manufact;
     }
 
     // to get the date of the product manufactured
@@ -56,15 +56,15 @@ public class Product
     }
 
     // to get the Manufacturer object
-    public Manufacturer getManufacture()
+    public Manufacturer getManufacturer()
     {
-        return manufacture;
+        return manufacturer;
     }
 
     // to set the Manufacturer object
-    public void setManufacture(Manufacturer manufacture)
+    public void setManufacturer(Manufacturer manufacturer)
     {
-        this.manufacture = manufacture;
+        this.manufacturer = manufacturer;
     }
 
     // to get the name of the product
@@ -125,9 +125,9 @@ public class Product
         result += String.format("%10d", quantity);
         result += String.format("\t%15.2f", unitPrice);
         result += String.format("\t%15s",
-                manufacture.getCompanyName());
+                manufacturer.getCompanyName());
         result += String.format("\t%20s",
-                manufacture.getCompanyAddress().getState());
+                manufacturer.getCompanyAddress().getState());
         return result;
     }
 }

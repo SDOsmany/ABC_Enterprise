@@ -10,8 +10,7 @@ public class Address {
         this.city=city;
         this.state=state;
         this.zip=zip;
-    }
-
+    }   
     // gets the street name
     public String getStreet(){
         return street;

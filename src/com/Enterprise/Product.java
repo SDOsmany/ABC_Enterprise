@@ -11,7 +11,7 @@ public class Product
     private Manufacturer manufacturer;
 
     // to hold product name
-    String productName;
+    private String productName;
 
     // to hold quantity
     private int quantity;

@@ -347,16 +347,16 @@ public class Main
     // public method to display the inventory list
     public static void displayInventory(Database productDB, int Type_Message)
     {
-        String inventResult = "";
+        String inventoryResult = "";
         ArrayList<Product> prodList = productDB.getList();
-        inventResult += String.format("%-30s \t%s %10s %15s %20s %15s\n",
+        inventoryResult += String.format("%-30s \t%s %10s %15s %20s %15s\n",
                 "Product", "Purchase Date", "Quantity", "Price($)",
                 "Manufacturer", "State");
         for (int i = 0; i < productDB.size(); i++)
         {
-            inventResult += prodList.get(i).getProductInfomation() + "\n";
+            inventoryResult += prodList.get(i).getProductInfomation() + "\n";
         }
-        JTextArea text = new JTextArea(inventResult, 10, 60);
+        JTextArea text = new JTextArea(inventoryResult, 10, 60);
 
         JScrollPane pane = new JScrollPane(text);
 

@@ -6,9 +6,6 @@ import java.util.*;
 
 public class Main
 {
-    // to set or to retrieve the date
-    static SimpleDateFormat simpleDate = new SimpleDateFormat("MM/dd/yyyy");
-
     // main() method
     public static void main(String args[]) throws ParseException
     {
@@ -24,10 +21,9 @@ public class Main
         Address address = null;
         Database productDB = new Database();
         Database deletedProdDB = new Database();
+        Display display = new Display();
         Date present = new Date();
         boolean isDone = false;
-
-
 
 
         int subMenu = 0;
@@ -68,7 +64,7 @@ public class Main
                     address = new Address(street, city, state, zip);
                     manufacture = new Manufacturer(companyName, address);
 
-                    present = simpleDate.parse(dateManu);
+                    present = display.getSimpleDateFormat().parse(dateManu);
 
                     // create the Product object
                     product = new Product(productName, quantity, unitPrice, present,
@@ -107,13 +103,13 @@ public class Main
                     // otherwise
                     else
                     {
-                        // depending on the user wants to update the information
+                        // depending on what the user wants to update
                         // switch to the respective case
                         switch (subMenu)
                         {
 
                             // if user selects 1, then the user wants to update
-                            // about the quantity
+                            //the quantity
                             case 1:
 
                                 // prompt the user whether user wants to add the
@@ -253,7 +249,7 @@ public class Main
                     if (productDB.inList())
                     {
                         // display the information about the single product
-                        displaySingleProduct(productDB.getProduct(),
+                    display.displaySingleProduct(productDB.getProduct(),
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
 
@@ -271,7 +267,7 @@ public class Main
                     if (productDB.getList() != null)
                     {
                         // if not null, display the inventory information
-                        displayInventory(productDB,
+                        display.displayInventory(productDB,
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
 
@@ -289,7 +285,7 @@ public class Main
                     // is not null
                     if (deletedProdDB.getList() != null)
                     {
-                        displayInventory(deletedProdDB,
+                        display.displayInventory(deletedProdDB,
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
 
@@ -315,67 +311,5 @@ public class Main
         }
     }
 
-    // public method to get the product information in a format
-    public static String getFormatedProductInfo(Product info)
-    {
-        String result = String.format("%30s", info.getProductName());
-        result += String.format("%30s", simpleDate.format(info.getProductCreated()));
-        result += String.format("%30s", info.getManufacturer().getCompanyName());
-        return result;
-    }
 
-    // public method to display the deleted inventory list
-    public static void displayDeletedInventory(Database productDB,
-                                               int Type_Message)
-    {
-        String inventResult = "";
-        ArrayList<Product> prodList = productDB.getList();
-        inventResult += String.format("%30s %30s %30s", "Product",
-                "Purchase Date", "Manufacturer");
-        for (int i = 0; i < productDB.size(); i++)
-        {
-            inventResult += getFormatedProductInfo(prodList.get(i)) + "\n";
-        }
-        JTextArea text = new JTextArea(inventResult, 10, 50);
-
-        JScrollPane pane = new JScrollPane(text);
-
-        JOptionPane.showMessageDialog(null, pane, "Deleted Inventory Details",
-                Type_Message);
-    }
-
-    // public method to display the inventory list
-    public static void displayInventory(Database productDB, int Type_Message)
-    {
-        String inventoryResult = "";
-        ArrayList<Product> prodList = productDB.getList();
-        inventoryResult += String.format("%-30s \t%s %10s %15s %20s %15s\n",
-                "Product", "Purchase Date", "Quantity", "Price($)",
-                "Manufacturer", "State");
-        for (int i = 0; i < productDB.size(); i++)
-        {
-            inventoryResult += prodList.get(i).getProductInfomation() + "\n";
-        }
-        JTextArea text = new JTextArea(inventoryResult, 10, 60);
-
-        JScrollPane pane = new JScrollPane(text);
-
-        JOptionPane.showMessageDialog(null, pane, "Inventory Details",
-                Type_Message);
-    }
-
-    // public method to display the single product
-    public static void displaySingleProduct(Product product, int Type_Message)
-    {
-        String productInfo = "Product Name: " + product.getProductName() + "\n";
-        productInfo += String.format("Product's Unit Price: $%.2f",
-                product.getUnitPrice()) + "\n";
-        productInfo += "Quantity of product: " + product.getQuantity() + "\n";
-        JTextArea text = new JTextArea(productInfo, 10, 30);
-
-        JScrollPane pane = new JScrollPane(text);
-
-        JOptionPane.showMessageDialog(null, pane,
-                product.getProductName() + " Details", Type_Message);
-    }
 }

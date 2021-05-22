@@ -1,11 +1,14 @@
 package com.Enterprise;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.NumberFormat;
 
 public class Product
 {
     // instance variables
-    private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+    private NumberFormat nf = NumberFormat.getCurrencyInstance();
 
     // to hold the Manufacturer object
     private Manufacturer manufacturer;
@@ -47,6 +50,14 @@ public class Product
     public Date getProductCreated()
     {
         return productCreated;
+    }
+
+    public NumberFormat getNf() {
+        return nf;
+    }
+
+    public SimpleDateFormat getSimpleDateFormat() {
+        return simpleDateFormat;
     }
 
     // to set the date of the product manufactured
@@ -120,13 +131,13 @@ public class Product
     {
         String result = "";
         result += String.format("%-30s", productName);
-        String dateForm = sdf.format(productCreated);
+        String dateForm = getSimpleDateFormat().format(productCreated);
         result += String.format("\t %s", dateForm);
         result += String.format("%10d", quantity);
-        result += String.format("\t%15.2f", unitPrice);
+        result += String.format("%-20s", " ")+getNf().format(unitPrice);
         result += String.format("\t%15s",
                 manufacturer.getCompanyName());
-        result += String.format("\t%20s",
+        result += String.format("\t%-20s",
                 manufacturer.getCompanyAddress().getState());
         return result;
     }

@@ -103,13 +103,13 @@ public class Main
                     // otherwise
                     else
                     {
-                        // depending on the user wants to update the information
+                        // depending on what the user wants to update
                         // switch to the respective case
                         switch (subMenu)
                         {
 
                             // if user selects 1, then the user wants to update
-                            // about the quantity
+                            //the quantity
                             case 1:
 
                                 // prompt the user whether user wants to add the

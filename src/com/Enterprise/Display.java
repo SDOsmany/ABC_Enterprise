@@ -33,7 +33,7 @@ public class Display {
         String inventoryResult = "";
         ArrayList<Product> productList = productDB.getList();
         inventoryResult += String.format("%30s %30s %30s", "Product",
-                "Purchase Date", "Manufacturer");
+                "Purchase Date", "Manufacturer\n");
         for (int i = 0; i < productDB.size(); i++)
         {
             inventoryResult += getFormatedProductInfo(productList.get(i)) + "\n";

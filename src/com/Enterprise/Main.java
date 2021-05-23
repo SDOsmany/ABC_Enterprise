@@ -285,7 +285,7 @@ public class Main
                     // is not null
                     if (deletedProdDB.getList() != null)
                     {
-                        display.displayInventory(deletedProdDB,
+                        display.displayDeletedInventory(deletedProdDB,
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
 
